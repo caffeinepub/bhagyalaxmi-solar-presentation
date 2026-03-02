@@ -89,21 +89,20 @@ export class ExternalBlob {
         return this;
     }
 }
-export type Phone = string;
-export type GeoLocation = string;
-export interface ContactInquiry {
+export interface Inquiry {
     name: string;
-    message: string;
-    phone: Phone;
-    location: GeoLocation;
+    district: string;
+    timestamp: Time;
+    phone: string;
 }
+export type Time = bigint;
 export interface backendInterface {
-    getAllInquiries(): Promise<Array<ContactInquiry>>;
-    submitInquiry(name: string, _phone: string, location: string, message: string): Promise<void>;
+    getAllInquiries(): Promise<Array<Inquiry>>;
+    submitInquiry(name: string, phone: string, district: string): Promise<void>;
 }
 export class Backend implements backendInterface {
     constructor(private actor: ActorSubclass<_SERVICE>, private _uploadFile: (file: ExternalBlob) => Promise<Uint8Array>, private _downloadFile: (file: Uint8Array) => Promise<ExternalBlob>, private processError?: (error: unknown) => never){}
-    async getAllInquiries(): Promise<Array<ContactInquiry>> {
+    async getAllInquiries(): Promise<Array<Inquiry>> {
         if (this.processError) {
             try {
                 const result = await this.actor.getAllInquiries();
@@ -117,17 +116,17 @@ export class Backend implements backendInterface {
             return result;
         }
     }
-    async submitInquiry(arg0: string, arg1: string, arg2: string, arg3: string): Promise<void> {
+    async submitInquiry(arg0: string, arg1: string, arg2: string): Promise<void> {
         if (this.processError) {
             try {
-                const result = await this.actor.submitInquiry(arg0, arg1, arg2, arg3);
+                const result = await this.actor.submitInquiry(arg0, arg1, arg2);
                 return result;
             } catch (e) {
                 this.processError(e);
                 throw new Error("unreachable");
             }
         } else {
-            const result = await this.actor.submitInquiry(arg0, arg1, arg2, arg3);
+            const result = await this.actor.submitInquiry(arg0, arg1, arg2);
             return result;
         }
     }

@@ -1,10 +1,10 @@
 import { useMutation, useQuery } from "@tanstack/react-query";
-import type { ContactInquiry } from "../backend.d";
+import type { Inquiry } from "../backend.d";
 import { useActor } from "./useActor";
 
 export function useGetAllInquiries() {
   const { actor, isFetching } = useActor();
-  return useQuery<ContactInquiry[]>({
+  return useQuery<Inquiry[]>({
     queryKey: ["inquiries"],
     queryFn: async () => {
       if (!actor) return [];
@@ -20,16 +20,14 @@ export function useSubmitInquiry() {
     mutationFn: async ({
       name,
       phone,
-      location,
-      message,
+      district,
     }: {
       name: string;
       phone: string;
-      location: string;
-      message: string;
+      district: string;
     }) => {
       if (!actor) throw new Error("Actor not available");
-      return actor.submitInquiry(name, phone, location, message);
+      return actor.submitInquiry(name, phone, district);
     },
   });
 }

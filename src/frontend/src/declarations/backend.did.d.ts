@@ -10,17 +10,16 @@ import type { ActorMethod } from '@icp-sdk/core/agent';
 import type { IDL } from '@icp-sdk/core/candid';
 import type { Principal } from '@icp-sdk/core/principal';
 
-export interface ContactInquiry {
+export interface Inquiry {
   'name' : string,
-  'message' : string,
-  'phone' : Phone,
-  'location' : GeoLocation,
+  'district' : string,
+  'timestamp' : Time,
+  'phone' : string,
 }
-export type GeoLocation = string;
-export type Phone = string;
+export type Time = bigint;
 export interface _SERVICE {
-  'getAllInquiries' : ActorMethod<[], Array<ContactInquiry>>,
-  'submitInquiry' : ActorMethod<[string, string, string, string], undefined>,
+  'getAllInquiries' : ActorMethod<[], Array<Inquiry>>,
+  'submitInquiry' : ActorMethod<[string, string, string], undefined>,
 }
 export declare const idlService: IDL.ServiceClass;
 export declare const idlInitArgs: IDL.Type[];

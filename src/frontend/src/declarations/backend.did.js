@@ -8,39 +8,33 @@
 
 import { IDL } from '@icp-sdk/core/candid';
 
-export const Phone = IDL.Text;
-export const GeoLocation = IDL.Text;
-export const ContactInquiry = IDL.Record({
+export const Time = IDL.Int;
+export const Inquiry = IDL.Record({
   'name' : IDL.Text,
-  'message' : IDL.Text,
-  'phone' : Phone,
-  'location' : GeoLocation,
+  'district' : IDL.Text,
+  'timestamp' : Time,
+  'phone' : IDL.Text,
 });
 
 export const idlService = IDL.Service({
-  'getAllInquiries' : IDL.Func([], [IDL.Vec(ContactInquiry)], ['query']),
-  'submitInquiry' : IDL.Func([IDL.Text, IDL.Text, IDL.Text, IDL.Text], [], []),
+  'getAllInquiries' : IDL.Func([], [IDL.Vec(Inquiry)], ['query']),
+  'submitInquiry' : IDL.Func([IDL.Text, IDL.Text, IDL.Text], [], []),
 });
 
 export const idlInitArgs = [];
 
 export const idlFactory = ({ IDL }) => {
-  const Phone = IDL.Text;
-  const GeoLocation = IDL.Text;
-  const ContactInquiry = IDL.Record({
+  const Time = IDL.Int;
+  const Inquiry = IDL.Record({
     'name' : IDL.Text,
-    'message' : IDL.Text,
-    'phone' : Phone,
-    'location' : GeoLocation,
+    'district' : IDL.Text,
+    'timestamp' : Time,
+    'phone' : IDL.Text,
   });
   
   return IDL.Service({
-    'getAllInquiries' : IDL.Func([], [IDL.Vec(ContactInquiry)], ['query']),
-    'submitInquiry' : IDL.Func(
-        [IDL.Text, IDL.Text, IDL.Text, IDL.Text],
-        [],
-        [],
-      ),
+    'getAllInquiries' : IDL.Func([], [IDL.Vec(Inquiry)], ['query']),
+    'submitInquiry' : IDL.Func([IDL.Text, IDL.Text, IDL.Text], [], []),
   });
 };
 

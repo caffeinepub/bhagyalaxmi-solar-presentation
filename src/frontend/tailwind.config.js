@@ -67,6 +67,11 @@ export default {
           ring: "oklch(var(--sidebar-ring))",
         },
       },
+      fontFamily: {
+        display: ["Bricolage Grotesque", "Georgia", "serif"],
+        body: ["Sora", "General Sans", "system-ui", "sans-serif"],
+        serif: ["Playfair Display", "Georgia", "serif"],
+      },
       borderRadius: {
         lg: "var(--radius)",
         md: "calc(var(--radius) - 2px)",
@@ -74,6 +79,8 @@ export default {
       },
       boxShadow: {
         xs: "0 1px 2px 0 rgba(0,0,0,0.05)",
+        gold: "0 4px 18px oklch(0.62 0.19 72 / 0.35)",
+        steel: "0 4px 18px oklch(0.38 0.14 230 / 0.25)",
       },
       keyframes: {
         "accordion-down": {

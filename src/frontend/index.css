@@ -3,16 +3,30 @@
 @tailwind utilities;
 
 @font-face {
+  font-family: 'Bricolage Grotesque';
+  src: url('/assets/fonts/BricolageGrotesque[opsz,wdth,wght].woff2') format('woff2');
+  font-weight: 200 800;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Sora';
+  src: url('/assets/fonts/Sora[wght].woff2') format('woff2');
+  font-weight: 100 800;
+  font-display: swap;
+}
+
+@font-face {
   font-family: 'Playfair Display';
   src: url('/assets/fonts/PlayfairDisplay[wght].woff2') format('woff2');
-  font-weight: 100 900;
+  font-weight: 400 900;
   font-display: swap;
 }
 
 @font-face {
   font-family: 'General Sans';
   src: url('/assets/fonts/GeneralSans-Variable.woff2') format('woff2');
-  font-weight: 100 900;
+  font-weight: 200 700;
   font-display: swap;
 }
 
@@ -20,233 +34,260 @@
   :root {
     --radius: 0.75rem;
 
-    /* Solar Energy Theme - Cream + Steel Blue */
-    /* Background: warm cream/ivory */
-    --background: 0.97 0.02 90;
-    --foreground: 0.15 0.04 240;
+    /* === BHAGYALAXMI SOLAR WEBSITE THEME === */
+    /* Cream + Steel Blue + Solar Gold */
 
-    /* Cards: light cream */
-    --card: 0.93 0.02 85;
-    --card-foreground: 0.15 0.04 240;
+    /* Backgrounds */
+    --background: 0.97 0.015 85;
+    --foreground: 0.14 0.04 235;
 
-    --popover: 0.95 0.02 88;
-    --popover-foreground: 0.15 0.04 240;
+    /* Cards */
+    --card: 0.96 0.015 80;
+    --card-foreground: 0.14 0.04 235;
 
-    /* Primary: steel blue */
-    --primary: 0.45 0.12 220;
+    --popover: 0.97 0.015 85;
+    --popover-foreground: 0.14 0.04 235;
+
+    /* Primary: deep steel blue */
+    --primary: 0.38 0.14 230;
     --primary-foreground: 0.97 0.01 80;
 
-    /* Secondary: light steel blue tint */
-    --secondary: 0.88 0.03 215;
-    --secondary-foreground: 0.20 0.05 230;
+    /* Secondary: warm steel tint */
+    --secondary: 0.90 0.03 215;
+    --secondary-foreground: 0.22 0.06 230;
 
-    --muted: 0.91 0.02 210;
-    --muted-foreground: 0.45 0.06 220;
+    --muted: 0.92 0.02 210;
+    --muted-foreground: 0.48 0.07 220;
 
-    /* Accent: gold (kept for company name & CTAs) */
-    --accent: 0.65 0.18 75;
-    --accent-foreground: 0.97 0.01 80;
+    /* Accent: solar amber/gold */
+    --accent: 0.62 0.19 72;
+    --accent-foreground: 0.10 0.02 80;
 
     --destructive: 0.577 0.245 27.325;
     --destructive-foreground: 0.985 0 0;
 
-    --border: 0.85 0.04 220;
-    --input: 0.90 0.03 215;
-    --ring: 0.45 0.12 220;
+    --border: 0.88 0.03 215;
+    --input: 0.93 0.02 210;
+    --ring: 0.38 0.14 230;
 
-    /* Chart colors */
-    --chart-1: 0.55 0.18 75;
-    --chart-2: 0.45 0.12 220;
-    --chart-3: 0.55 0.15 160;
-    --chart-4: 0.60 0.18 30;
-    --chart-5: 0.45 0.14 260;
+    /* Charts */
+    --chart-1: 0.62 0.19 72;
+    --chart-2: 0.38 0.14 230;
+    --chart-3: 0.52 0.16 160;
+    --chart-4: 0.58 0.18 30;
+    --chart-5: 0.42 0.15 265;
 
     /* Sidebar */
-    --sidebar: 0.95 0.02 88;
-    --sidebar-foreground: 0.15 0.04 240;
-    --sidebar-primary: 0.45 0.12 220;
-    --sidebar-primary-foreground: 0.97 0.01 80;
-    --sidebar-accent: 0.88 0.03 215;
-    --sidebar-accent-foreground: 0.20 0.05 230;
-    --sidebar-border: 0.85 0.04 220;
-    --sidebar-ring: 0.45 0.12 220;
+    --sidebar: 0.20 0.06 230;
+    --sidebar-foreground: 0.97 0.01 80;
+    --sidebar-primary: 0.62 0.19 72;
+    --sidebar-primary-foreground: 0.10 0.02 80;
+    --sidebar-accent: 0.30 0.10 230;
+    --sidebar-accent-foreground: 0.97 0.01 80;
+    --sidebar-border: 0.30 0.08 230;
+    --sidebar-ring: 0.62 0.19 72;
 
-    /* Custom solar theme tokens */
-    --solar-gold: 0.55 0.18 75;
-    --solar-gold-bright: 0.65 0.20 80;
-    --solar-cream: 0.97 0.02 90;
-    --solar-cream-mid: 0.93 0.02 85;
-    --solar-cream-light: 0.91 0.02 88;
-    --solar-steel: 0.45 0.12 220;
-    --solar-steel-dark: 0.35 0.12 225;
-    --solar-amber: 0.60 0.18 60;
-    --solar-white: 0.97 0.01 80;
-    --solar-text-dim: 0.50 0.06 215;
-    --solar-navy: 0.15 0.04 240;
+    /* === Custom Solar Tokens === */
+    --gold: 0.62 0.19 72;
+    --gold-bright: 0.70 0.22 78;
+    --gold-dark: 0.50 0.18 65;
+    --steel: 0.38 0.14 230;
+    --steel-mid: 0.50 0.12 225;
+    --steel-light: 0.78 0.07 220;
+    --cream: 0.97 0.015 85;
+    --cream-mid: 0.93 0.02 82;
+    --cream-deep: 0.88 0.03 78;
+    --navy: 0.18 0.06 238;
+    --navy-dark: 0.12 0.05 240;
+    --text-body: 0.28 0.04 230;
+    --text-muted: 0.52 0.06 220;
   }
 
   * {
     @apply border-border;
   }
 
+  html {
+    scroll-behavior: smooth;
+  }
+
   body {
     @apply bg-background text-foreground;
-    font-family: 'General Sans', system-ui, sans-serif;
-    overflow: hidden;
+    font-family: 'Sora', 'General Sans', system-ui, sans-serif;
+    overflow-x: hidden;
+    overflow-y: auto;
   }
 
   h1, h2, h3 {
-    font-family: 'Playfair Display', Georgia, serif;
+    font-family: 'Bricolage Grotesque', 'Playfair Display', Georgia, serif;
   }
 }
 
 @layer utilities {
   .font-display {
-    font-family: 'Playfair Display', Georgia, serif;
+    font-family: 'Bricolage Grotesque', Georgia, serif;
   }
   .font-body {
-    font-family: 'General Sans', system-ui, sans-serif;
+    font-family: 'Sora', 'General Sans', system-ui, sans-serif;
   }
-  .text-solar-gold {
-    color: oklch(var(--solar-gold));
-  }
-  .bg-solar-navy {
-    background-color: oklch(var(--solar-cream));
-  }
-  .bg-solar-navy-mid {
-    background-color: oklch(var(--solar-cream-mid));
-  }
-  .border-solar-gold {
-    border-color: oklch(var(--solar-gold));
-  }
-  .slide-enter {
-    animation: slideEnter 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-  }
-  .slide-exit {
-    animation: slideExit 0.3s ease-in forwards;
+  .font-serif {
+    font-family: 'Playfair Display', Georgia, serif;
   }
 }
 
-@keyframes slideEnter {
-  from {
-    opacity: 0;
-    transform: translateY(16px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+/* ===================== */
+/* DESIGN TOKENS & UTILS */
+/* ===================== */
+
+/* Gold gradient text */
+.text-gold {
+  color: oklch(var(--gold));
+}
+.text-gold-bright {
+  color: oklch(var(--gold-bright));
+}
+.text-steel {
+  color: oklch(var(--steel));
+}
+.text-navy {
+  color: oklch(var(--navy));
 }
 
-@keyframes slideExit {
-  from {
-    opacity: 1;
-    transform: translateY(0);
-  }
-  to {
-    opacity: 0;
-    transform: translateY(-16px);
-  }
-}
-
-@keyframes sunRays {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-}
-
-@keyframes pulse-glow {
-  0%, 100% { box-shadow: 0 0 20px oklch(0.55 0.18 75 / 0.25); }
-  50% { box-shadow: 0 0 40px oklch(0.55 0.18 75 / 0.45); }
-}
-
-.animate-pulse-glow {
-  animation: pulse-glow 3s ease-in-out infinite;
-}
-
-/* Slide background gradient — cream + subtle steel blue radials */
-.slide-bg {
-  background: 
-    radial-gradient(ellipse at 20% 50%, oklch(0.85 0.06 215 / 0.35) 0%, transparent 60%),
-    radial-gradient(ellipse at 80% 20%, oklch(0.90 0.04 200 / 0.25) 0%, transparent 50%),
-    oklch(var(--solar-cream));
-}
-
-.slide-bg-alt {
-  background: 
-    radial-gradient(ellipse at 80% 80%, oklch(0.88 0.05 210 / 0.5) 0%, transparent 60%),
-    oklch(0.95 0.02 88);
-}
-
-/* Golden gradient for titles */
 .text-gradient-gold {
-  background: linear-gradient(135deg, oklch(0.60 0.20 80), oklch(0.50 0.18 55));
+  background: linear-gradient(135deg, oklch(var(--gold-bright)), oklch(var(--gold-dark)));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
-/* Phase badge — steel blue */
+.text-gradient-steel {
+  background: linear-gradient(135deg, oklch(var(--steel)), oklch(var(--navy)));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Card styles */
+.solar-card {
+  background: oklch(var(--cream));
+  border: 1.5px solid oklch(var(--border));
+  border-radius: 1rem;
+  transition: all 0.25s ease;
+}
+.solar-card:hover {
+  border-color: oklch(var(--steel) / 0.4);
+  box-shadow: 0 8px 32px oklch(var(--steel) / 0.12);
+  transform: translateY(-2px);
+}
+
+.gold-card {
+  background: linear-gradient(135deg, oklch(var(--gold-dark) / 0.08), oklch(var(--gold) / 0.04));
+  border: 1.5px solid oklch(var(--gold) / 0.3);
+  border-radius: 1rem;
+}
+
+/* Section backgrounds */
+.section-cream {
+  background: oklch(var(--cream));
+}
+.section-cream-mid {
+  background: oklch(var(--cream-mid));
+}
+.section-steel-dark {
+  background: oklch(var(--navy-dark));
+}
+.section-navy {
+  background: oklch(var(--navy));
+}
+
+/* Floating WhatsApp button pulse */
+@keyframes whatsapp-pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.55); }
+  50% { box-shadow: 0 0 0 12px rgba(37, 211, 102, 0); }
+}
+.whatsapp-pulse {
+  animation: whatsapp-pulse 2s ease-in-out infinite;
+}
+
+/* Navbar */
+.navbar-glass {
+  background: oklch(var(--navy-dark) / 0.96);
+  border-bottom: 1px solid oklch(var(--steel) / 0.3);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+/* Gold CTA button */
+.btn-gold {
+  background: linear-gradient(135deg, oklch(var(--gold-bright)), oklch(var(--gold-dark)));
+  color: oklch(0.12 0.04 75);
+  font-weight: 700;
+  border: none;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 18px oklch(var(--gold) / 0.35);
+}
+.btn-gold:hover {
+  box-shadow: 0 6px 28px oklch(var(--gold) / 0.55);
+  transform: translateY(-1px);
+}
+.btn-gold:active {
+  transform: translateY(0);
+}
+
+/* Phase badge */
 .phase-badge {
-  background: linear-gradient(135deg, oklch(0.45 0.12 220), oklch(0.38 0.14 225));
-  color: oklch(0.97 0.01 80);
-  font-family: 'General Sans', sans-serif;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-}
-
-/* Subsidy table */
-.subsidy-table th {
-  background: oklch(0.45 0.12 220 / 0.10);
-  color: oklch(0.35 0.12 225);
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  font-size: 0.75rem;
-}
-
-.subsidy-table tr:nth-child(odd) td {
-  background: oklch(0.88 0.03 215 / 0.30);
-}
-
-.subsidy-table .highlight-row td {
-  background: oklch(0.55 0.18 75 / 0.08);
-  color: oklch(0.20 0.06 240);
-  font-weight: 700;
-}
-
-/* Step numbers */
-.step-number {
-  background: linear-gradient(135deg, oklch(0.45 0.12 220), oklch(0.38 0.14 225));
+  background: linear-gradient(135deg, oklch(var(--steel)), oklch(var(--navy)));
   color: oklch(0.97 0.01 80);
   font-weight: 800;
+  letter-spacing: 0.1em;
+}
+
+/* Subsidy highlight */
+.subsidy-highlight {
+  background: linear-gradient(135deg, oklch(var(--gold) / 0.12), oklch(var(--gold-bright) / 0.06));
+  border: 2px solid oklch(var(--gold) / 0.4);
+}
+
+/* Step number circle */
+.step-circle {
+  background: linear-gradient(135deg, oklch(var(--steel)), oklch(var(--navy)));
+  color: white;
   border-radius: 50%;
-  width: 2.5rem;
-  height: 2.5rem;
+  width: 2.75rem;
+  height: 2.75rem;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-family: 'General Sans', sans-serif;
+  font-weight: 800;
+  font-family: 'Bricolage Grotesque', sans-serif;
   flex-shrink: 0;
+  box-shadow: 0 4px 12px oklch(var(--steel) / 0.3);
 }
 
-/* Card glow — steel blue */
-.card-glow:hover {
-  box-shadow: 0 0 30px oklch(0.45 0.12 220 / 0.20);
-  border-color: oklch(0.45 0.12 220 / 0.45);
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: oklch(var(--cream-mid));
+}
+::-webkit-scrollbar-thumb {
+  background: oklch(var(--steel-light));
+  border-radius: 3px;
 }
 
-/* Scrollbar for overflow content — steel blue */
-.slide-scroll {
-  overflow-y: auto;
-  scrollbar-width: thin;
-  scrollbar-color: oklch(0.45 0.12 220 / 0.3) transparent;
+/* Section divider */
+.section-divider {
+  height: 4px;
+  background: linear-gradient(90deg, oklch(var(--gold)), oklch(var(--steel)), oklch(var(--gold)));
+  opacity: 0.6;
 }
 
-.slide-scroll::-webkit-scrollbar {
-  width: 4px;
+/* Animate fade up */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
 }
-
-.slide-scroll::-webkit-scrollbar-thumb {
-  background: oklch(0.45 0.12 220 / 0.3);
-  border-radius: 2px;
+.animate-fade-up {
+  animation: fadeUp 0.6s ease forwards;
 }
