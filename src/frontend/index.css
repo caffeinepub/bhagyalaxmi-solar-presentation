@@ -1,0 +1,252 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: 'Playfair Display';
+  src: url('/assets/fonts/PlayfairDisplay[wght].woff2') format('woff2');
+  font-weight: 100 900;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'General Sans';
+  src: url('/assets/fonts/GeneralSans-Variable.woff2') format('woff2');
+  font-weight: 100 900;
+  font-display: swap;
+}
+
+@layer base {
+  :root {
+    --radius: 0.75rem;
+
+    /* Solar Energy Theme - Cream + Steel Blue */
+    /* Background: warm cream/ivory */
+    --background: 0.97 0.02 90;
+    --foreground: 0.15 0.04 240;
+
+    /* Cards: light cream */
+    --card: 0.93 0.02 85;
+    --card-foreground: 0.15 0.04 240;
+
+    --popover: 0.95 0.02 88;
+    --popover-foreground: 0.15 0.04 240;
+
+    /* Primary: steel blue */
+    --primary: 0.45 0.12 220;
+    --primary-foreground: 0.97 0.01 80;
+
+    /* Secondary: light steel blue tint */
+    --secondary: 0.88 0.03 215;
+    --secondary-foreground: 0.20 0.05 230;
+
+    --muted: 0.91 0.02 210;
+    --muted-foreground: 0.45 0.06 220;
+
+    /* Accent: gold (kept for company name & CTAs) */
+    --accent: 0.65 0.18 75;
+    --accent-foreground: 0.97 0.01 80;
+
+    --destructive: 0.577 0.245 27.325;
+    --destructive-foreground: 0.985 0 0;
+
+    --border: 0.85 0.04 220;
+    --input: 0.90 0.03 215;
+    --ring: 0.45 0.12 220;
+
+    /* Chart colors */
+    --chart-1: 0.55 0.18 75;
+    --chart-2: 0.45 0.12 220;
+    --chart-3: 0.55 0.15 160;
+    --chart-4: 0.60 0.18 30;
+    --chart-5: 0.45 0.14 260;
+
+    /* Sidebar */
+    --sidebar: 0.95 0.02 88;
+    --sidebar-foreground: 0.15 0.04 240;
+    --sidebar-primary: 0.45 0.12 220;
+    --sidebar-primary-foreground: 0.97 0.01 80;
+    --sidebar-accent: 0.88 0.03 215;
+    --sidebar-accent-foreground: 0.20 0.05 230;
+    --sidebar-border: 0.85 0.04 220;
+    --sidebar-ring: 0.45 0.12 220;
+
+    /* Custom solar theme tokens */
+    --solar-gold: 0.55 0.18 75;
+    --solar-gold-bright: 0.65 0.20 80;
+    --solar-cream: 0.97 0.02 90;
+    --solar-cream-mid: 0.93 0.02 85;
+    --solar-cream-light: 0.91 0.02 88;
+    --solar-steel: 0.45 0.12 220;
+    --solar-steel-dark: 0.35 0.12 225;
+    --solar-amber: 0.60 0.18 60;
+    --solar-white: 0.97 0.01 80;
+    --solar-text-dim: 0.50 0.06 215;
+    --solar-navy: 0.15 0.04 240;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'General Sans', system-ui, sans-serif;
+    overflow: hidden;
+  }
+
+  h1, h2, h3 {
+    font-family: 'Playfair Display', Georgia, serif;
+  }
+}
+
+@layer utilities {
+  .font-display {
+    font-family: 'Playfair Display', Georgia, serif;
+  }
+  .font-body {
+    font-family: 'General Sans', system-ui, sans-serif;
+  }
+  .text-solar-gold {
+    color: oklch(var(--solar-gold));
+  }
+  .bg-solar-navy {
+    background-color: oklch(var(--solar-cream));
+  }
+  .bg-solar-navy-mid {
+    background-color: oklch(var(--solar-cream-mid));
+  }
+  .border-solar-gold {
+    border-color: oklch(var(--solar-gold));
+  }
+  .slide-enter {
+    animation: slideEnter 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+  .slide-exit {
+    animation: slideExit 0.3s ease-in forwards;
+  }
+}
+
+@keyframes slideEnter {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideExit {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-16px);
+  }
+}
+
+@keyframes sunRays {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 20px oklch(0.55 0.18 75 / 0.25); }
+  50% { box-shadow: 0 0 40px oklch(0.55 0.18 75 / 0.45); }
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 3s ease-in-out infinite;
+}
+
+/* Slide background gradient — cream + subtle steel blue radials */
+.slide-bg {
+  background: 
+    radial-gradient(ellipse at 20% 50%, oklch(0.85 0.06 215 / 0.35) 0%, transparent 60%),
+    radial-gradient(ellipse at 80% 20%, oklch(0.90 0.04 200 / 0.25) 0%, transparent 50%),
+    oklch(var(--solar-cream));
+}
+
+.slide-bg-alt {
+  background: 
+    radial-gradient(ellipse at 80% 80%, oklch(0.88 0.05 210 / 0.5) 0%, transparent 60%),
+    oklch(0.95 0.02 88);
+}
+
+/* Golden gradient for titles */
+.text-gradient-gold {
+  background: linear-gradient(135deg, oklch(0.60 0.20 80), oklch(0.50 0.18 55));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Phase badge — steel blue */
+.phase-badge {
+  background: linear-gradient(135deg, oklch(0.45 0.12 220), oklch(0.38 0.14 225));
+  color: oklch(0.97 0.01 80);
+  font-family: 'General Sans', sans-serif;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+
+/* Subsidy table */
+.subsidy-table th {
+  background: oklch(0.45 0.12 220 / 0.10);
+  color: oklch(0.35 0.12 225);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-size: 0.75rem;
+}
+
+.subsidy-table tr:nth-child(odd) td {
+  background: oklch(0.88 0.03 215 / 0.30);
+}
+
+.subsidy-table .highlight-row td {
+  background: oklch(0.55 0.18 75 / 0.08);
+  color: oklch(0.20 0.06 240);
+  font-weight: 700;
+}
+
+/* Step numbers */
+.step-number {
+  background: linear-gradient(135deg, oklch(0.45 0.12 220), oklch(0.38 0.14 225));
+  color: oklch(0.97 0.01 80);
+  font-weight: 800;
+  border-radius: 50%;
+  width: 2.5rem;
+  height: 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'General Sans', sans-serif;
+  flex-shrink: 0;
+}
+
+/* Card glow — steel blue */
+.card-glow:hover {
+  box-shadow: 0 0 30px oklch(0.45 0.12 220 / 0.20);
+  border-color: oklch(0.45 0.12 220 / 0.45);
+}
+
+/* Scrollbar for overflow content — steel blue */
+.slide-scroll {
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: oklch(0.45 0.12 220 / 0.3) transparent;
+}
+
+.slide-scroll::-webkit-scrollbar {
+  width: 4px;
+}
+
+.slide-scroll::-webkit-scrollbar-thumb {
+  background: oklch(0.45 0.12 220 / 0.3);
+  border-radius: 2px;
+}
